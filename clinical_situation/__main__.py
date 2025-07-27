@@ -1,7 +1,7 @@
 import yaml
 import dspy
 from config import load_config
-from modules import ExtractPrimaryConditions, ExtractOutcomes
+from modules import ExtractPrimaryConditions
 
 import yaml
 
@@ -20,8 +20,3 @@ modulePC = dspy.Predict(ExtractPrimaryConditions)
 responsePC = modulePC(text=text)
 
 print(responsePC.headings)
-
-moduleO = dspy.Predict(ExtractOutcomes)
-responseO = moduleO(text=text)
-
-print(responseO.headings)
