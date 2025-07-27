@@ -1,5 +1,6 @@
 import yaml
 
+
 def load_config(yaml_file: str) -> dict:
     """"""
     try:
@@ -11,5 +12,4 @@ def load_config(yaml_file: str) -> dict:
     except yaml.YAMLError as e:
         raise ValueError(f"Erreur lors de la lecture du fichier YAML : {e}")
     except Exception as e:
-        raise ValueError(
-            f"Erreur lors de la validation de la configuration : {e}")
+        raise ValueError(f"Erreur lors de la validation de la configuration : {e}")
