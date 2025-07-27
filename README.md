@@ -7,11 +7,11 @@ Detect clinical situation in medical records using DSPy
 flowchart TB
 
 mr("Medical records")
-ea("DSPy extract agent")
-ca("DSPY classification agent")
+ea("DSPy extract module")
+ca("DSPY classification module")
 cs("Clinical situation")
 
 mr --> ea & ca
-ea --"Leading cause of hospitalisation"--> ca
+ea --"Primary conditions for admission"--> ca
 ca --> cs
 ```
