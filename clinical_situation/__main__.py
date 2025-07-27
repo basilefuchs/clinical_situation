@@ -3,7 +3,6 @@ import dspy
 from config import load_config
 from modules import ExtractPrimaryConditions
 
-import yaml
 
 config = load_config("clinical_situation/config/config.yaml")
 
