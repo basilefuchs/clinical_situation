@@ -8,7 +8,7 @@ flowchart TB
 
 mr("Medical records")
 ea("DSPy extract module")
-ca("DSPY classification module")
+ca("DSPy classification module")
 cs("Clinical situation")
 
 mr --> ea & ca
