@@ -50,7 +50,10 @@ Après une hospitalisation de 3 jours, Jeanne a pu quitter l'hôpital avec un di
 """
 
 extract_motif = ClinicalSituation("motif")
-extract_soins = ClinicalSituation("soins")
-
 print(extract_motif(text))
+
+extract_diag = ClinicalSituation("diag")
+print(extract_diag(text))
+
+extract_soins = ClinicalSituation("soins")
 print(extract_soins(text))
