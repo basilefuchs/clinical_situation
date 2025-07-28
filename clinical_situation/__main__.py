@@ -1,7 +1,7 @@
 import yaml
 import dspy
 from config import lm
-from modules import ExtractPrimaryConditions, ExtractCares, ClinicalSituation
+from modules import Extract, ClinicalSituation
 
 dspy.configure(lm=lm())
 
@@ -50,11 +50,14 @@ Conclusion et recommandations :
 Après une hospitalisation de 3 jours, Jeanne a pu quitter l'hôpital avec un diagnostic final d'un faux travail avant 37 semaines entières de gestation. Pour assurer un suivi optimal des jumeaux, il est recommandé de surveiller régulièrement la croissance intra-utérine et la fonction cardiaque de Jeanne, ainsi que de suivre de près l'évolution de son insuffisance rénale chronique légère. Des visites de suivi régulières sont également nécessaires pour s'assurer qu'il n'y a pas de récidive du faux travail avant l'accouchement prévu à terme.
 """
 
-extract_motif = ClinicalSituation("motif")
+extract_motif = Extract("motif")
 print(extract_motif(text))
 
-extract_diag = ClinicalSituation("diag")
+extract_diag = Extract("diag")
 print(extract_diag(text))
 
-extract_soins = ClinicalSituation("soins")
+extract_soins = Extract("soins")
 print(extract_soins(text))
+
+situation_clinique = ClinicalSituation()
+print(situation_clinique(text))
