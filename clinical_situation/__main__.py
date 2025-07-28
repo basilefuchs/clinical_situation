@@ -49,6 +49,8 @@ Conclusion et recommandations :
 Après une hospitalisation de 3 jours, Jeanne a pu quitter l'hôpital avec un diagnostic final d'un faux travail avant 37 semaines entières de gestation. Pour assurer un suivi optimal des jumeaux, il est recommandé de surveiller régulièrement la croissance intra-utérine et la fonction cardiaque de Jeanne, ainsi que de suivre de près l'évolution de son insuffisance rénale chronique légère. Des visites de suivi régulières sont également nécessaires pour s'assurer qu'il n'y a pas de récidive du faux travail avant l'accouchement prévu à terme.
 """
 
-extract = ClinicalSituation("soins")
+extract_motif = ClinicalSituation("motif")
+extract_soins = ClinicalSituation("soins")
 
-print(extract(text))
+print(extract_motif(text))
+print(extract_soins(text))
