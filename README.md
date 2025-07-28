@@ -11,7 +11,9 @@ ea("DSPy extract module")
 ca("DSPy classification module")
 cs("Clinical situation")
 
-mr --> ea & ca
+mr --> ea
 ea --"Primary conditions for admission"--> ca
+ea --"Main pathology"--> ca
+ea --"Care provided"--> ca
 ca --> cs
 ```

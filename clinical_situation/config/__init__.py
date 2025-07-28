@@ -23,7 +23,7 @@ def lm():
     return lm
 
 
-def prompt(motif, diag, soins, text) -> str:
+def prompt(motif, diag, soins) -> str:
     text = f"""
   ### Motif d'hospitalisation:
   {motif}
@@ -33,8 +33,5 @@ def prompt(motif, diag, soins, text) -> str:
 
   ### Prise en charge:
   {soins}
-
-  ### Compte rendu médicale:
-  {text}
   """
     return text

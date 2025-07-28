@@ -69,7 +69,7 @@ soins = (", ".join(extract_soins(text)))
 
 situation_clinique = ClinicalSituation()
 
-ehanced_text = prompt(motif, diag, soins, text)
+ehanced_text = prompt(motif, diag, soins)
 
 print(ehanced_text)
 print(situation_clinique(ehanced_text))
