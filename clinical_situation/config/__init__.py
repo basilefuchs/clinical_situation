@@ -21,3 +21,20 @@ def lm():
     config = load_config("clinical_situation/config/config.yaml")
     lm = dspy.LM(config["llm"]["model"], api_base=config["llm"]["port"], api_key="")
     return lm
+
+
+def prompt(motif, diag, soins, text) -> str:
+    text = f"""
+  ### Motif d'hospitalisation:
+  {motif}
+
+  ### Pathologie principale:
+  {diag}
+
+  ### Prise en charge:
+  {soins}
+
+  ### Compte rendu médicale:
+  {text}
+  """
+    return text
