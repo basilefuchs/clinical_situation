@@ -39,7 +39,8 @@ Cholestérol total : 180 mg/dL (valeur normale < 200 mg/dL)
 LDL : 110 mg/dL (valeur normale < 100 mg/dL)
 HDL : 60 mg/dL (valeur normale > 40 mg/dL)
 Triglycérides : 150 mg/dL (valeur normale < 150 mg/dL)
-Pathologies associées fictives :
+
+Pathologies associées :
 Jeanne présente également une insuffisance rénale chronique légère et un hypercholestérolémie, mais il n'y a pas de complications majeures à ce jour.
 
 Traitement et évolution :
