@@ -25,16 +25,31 @@ class ExtractCares(dspy.Signature):
 
 class Classify(dspy.Signature):
     """
-    Classer la situation clinique d'une hopitalisation à partir d'un text enrichi.
-    Classification possible :
-      - Diagnostic : La situation est celle d’un patient hospitalisé en raison d’une symptomatologie,
-      pour un diagnostic étiologique. Le mot symptomatologie inclut les signes cliniques et les résultats
-      anormaux d’examens complémentaires.
-      - Traitement : La situation est celle d’un patient atteint d’une affection connue,
-      diagnostiquée avant l’admission, hospitalisé pour le traitement de celle-ci.
-      - Suveillance : La situation est celle d’un patient atteint d'une affection connue, antérieurement diagnostiquée,
-      éventuellement traitée (antérieurement traitée ou en cours de traitement), hospitalisé pour la surveillance de celle-ci.
-    """
+### Tâche :
+Classer la situation clinique décrite dans un texte médical enrichi selon l’un des trois types d’hospitalisation suivants.
+
+### Objectif :
+Analyser le texte fourni et attribuer la catégorie clinique la plus appropriée à la situation d’hospitalisation.
+
+### Catégories de classification possibles :
+
+#### Diagnostic :
+Le patient est hospitalisé en raison d’une symptomatologie inexpliquée nécessitant une investigation étiologique.
+La symptomatologie peut inclure des signes cliniques, des plaintes du patient ou des anomalies d’examens complémentaires, sans diagnostic connu préalable.
+
+####Traitement :
+Le patient est hospitalisé pour recevoir un traitement ciblé d’une affection déjà connue et diagnostiquée avant l’admission.
+L’objectif principal est la prise en charge thérapeutique de cette pathologie.
+
+#### Surveillance :
+Le patient présente une affection connue (déjà diagnostiquée et éventuellement traitée), et l’hospitalisation a pour but le suivi, la surveillance clinique, biologique ou radiologique, sans intervention thérapeutique immédiate attendue.
+
+### Consignes :
+Lire attentivement le texte.
+Identifier les éléments pertinents : antécédents, symptômes, diagnostics, traitements, objectifs de l’hospitalisation.
+Choisir une seule catégorie parmi les trois proposées.
+Ne pas justifier la classification.
+"""
 
     text: str = dspy.InputField(desc="une synthèse de la situation.")
     classification: Literal["Diagnostic", "Traitement", "Surveillance"] = (
