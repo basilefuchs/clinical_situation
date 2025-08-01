@@ -1,3 +1,0 @@
-llm:
-  model: "ollama_chat/mistral"
-  port: "http://localhost:11434"
