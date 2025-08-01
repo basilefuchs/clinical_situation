@@ -1,4 +1,3 @@
-import yaml
 import dspy
 from config import lm, prompt
 from modules import Extract, ClinicalSituation
@@ -59,13 +58,13 @@ pour garantir l'efficacité du traitement.
 """
 
 extract_motif = Extract("motif")
-motif = (", ".join(extract_motif(text)))
+motif = ", ".join(extract_motif(text))
 
 extract_diag = Extract("diag")
-diag = (", ".join(extract_diag(text)))
+diag = ", ".join(extract_diag(text))
 
 extract_soins = Extract("soins")
-soins = (", ".join(extract_soins(text)))
+soins = ", ".join(extract_soins(text))
 
 situation_clinique = ClinicalSituation()
 
