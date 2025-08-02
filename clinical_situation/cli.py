@@ -6,7 +6,7 @@ from .cs import cs
 app = typer.Typer(help="CLI to run clinical situation analysis on files or directories.")
 
 
-@app.command(help="Run clinical situation analysis on a txt file or all .txt files in a directory.")
+@app.command(help="Run clinical situation analysis on a .txt file or all .txt files in a directory.")
 def clinical_situation(
     p: str = typer.Argument(".", help="Directory or file to run"),
     m: str = typer.Argument(..., help="Model to run"),
@@ -22,7 +22,7 @@ def clinical_situation(
         os.chdir(p)
         txt_files = [f for f in p.iterdir() if f.is_file() and f.suffix == ".txt"]
         if not txt_files:
-            typer.echo("❌ No .txt files found in the directory.", err=True)
+            typer.BadParameter(f"❌ No .txt files found in the directory: {p}")
             raise typer.Exit(code=1)
         for _ in txt_files:
             with open(_, "r", encoding="utf-8") as file:
@@ -31,7 +31,8 @@ def clinical_situation(
                 cs(text, m)
 
     else:
-        raise typer.BadParameter(f"❌ Not a .txt file: {p}")
+        typer.BadParameter(f"❌ Not a .txt file: {p}")
+        raise typer.Exit(code=1)
 
 
 if __name__ == "__main__":
