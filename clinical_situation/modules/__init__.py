@@ -1,5 +1,5 @@
 import dspy
-from signatures import (
+from .signatures import (
     ExtractPrimaryConditions,
     ExtractDiagnosis,
     ExtractCares,

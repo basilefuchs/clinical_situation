@@ -16,10 +16,14 @@ def load_config(yaml_file: str) -> dict:
         raise ValueError(f"Erreur lors de la validation de la configuration : {e}")
 
 
-def lm():
+def lm(model):
     """"""
     config = load_config("clinical_situation/config/config.yaml")
-    lm = dspy.LM(config["llm"]["model"], api_base=config["llm"]["port"], api_key="")
+    lm = dspy.LM(
+        config["llm"]["service"] + model,
+        api_base=config["llm"]["port"],
+        api_key=config["llm"]["api_key"],
+    )
     return lm
 
 
