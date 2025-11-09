@@ -3,21 +3,53 @@ from typing import Literal
 
 
 class ExtractPrimaryConditions(dspy.Signature):
-    """Extraire le motif d'hospitalisation à partir d'un compte rendu médical."""
+    """Extraire le motif principal d'hospitalisation à partir d'un compte rendu médical. Répondre uniquement en Français."""
 
     text: str = dspy.InputField(desc="un compte rendu médical.")
-    entities: list[str] = dspy.OutputField(desc="le motif d'hospitalisation.")
+    entities: list[str] = dspy.OutputField(
+        desc="le motif principal d'hospitalisation. "
+    )
+
+
+class ExtractMedicalHistory(dspy.Signature):
+    """Extraire les antécédants médicaux d'un compte rendu médical. Répondre uniquement en Français."""
+
+    text: str = dspy.InputField(desc="un compte rendu médical.")
+    entities: list[str] = dspy.OutputField(
+        desc="une liste de tous les antécédants médicaux."
+    )
+
+
+class ExtractSymptoms(dspy.Signature):
+    """Extraire les symptômes d'un compte rendu médical. Répondre uniquement en Français."""
+
+    text: str = dspy.InputField(desc="un compte rendu médical.")
+    entities: list[str] = dspy.OutputField(desc="une liste de tous les symptômes.")
+
+
+class ExtractSyndromes(dspy.Signature):
+    """Extraire les syndromes d'un compte rendu médical. Répondre uniquement en Français."""
+
+    text: str = dspy.InputField(desc="un compte rendu médical.")
+    entities: list[str] = dspy.OutputField(desc="une liste de tous les syndromes.")
 
 
 class ExtractDiagnosis(dspy.Signature):
-    """Extraire la pathologie principale d'un compte rendu médical."""
+    """Extraire les pathologies d'un compte rendu médical. Répondre uniquement en Français."""
+
+    text: str = dspy.InputField(desc="un compte rendu médical.")
+    entities: list[str] = dspy.OutputField(desc="une liste de toutes les pathologies.")
+
+
+class ExtractMainDiagnosis(dspy.Signature):
+    """Extraire la pathologie principale d'un compte rendu médical. Répondre uniquement en Français."""
 
     text: str = dspy.InputField(desc="un compte rendu médical.")
     entities: list[str] = dspy.OutputField(desc="la pathologie principale.")
 
 
 class ExtractCares(dspy.Signature):
-    """Extraire tous les soins d'un compte rendu médicale."""
+    """Extraire tous les soins d'un compte rendu médicale. Répondre uniquement en Français."""
 
     text: str = dspy.InputField(desc="un compte rendu médical.")
     entities: list[str] = dspy.OutputField(desc="une liste de tous les soins.")

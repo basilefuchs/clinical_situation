@@ -13,7 +13,10 @@ cs("Clinical situation")
 
 mr --> ea
 ea --"Primary conditions for admission"--> ca
-ea --"Main pathology"--> ca
+ea --"Medical history"--> ca
+ea --"Symptoms"--> ca
+ea --"Syndromes"--> ca
+ea --"Diagnosis"--> ca
 ea --"Care provided"--> ca
 ca --> cs
 ```
@@ -72,13 +75,36 @@ Output :warning: **WORK IN PROGRESS** :warning: :
 
 ```
 ### Motif d'hospitalisation:
-infarctus cutané
+- infarctus cutané
+
+### Antécédant:
+- épisodes de fatigue récurrents
+- céphalée chronique
+
+### Symptomes:
+- douleurs persistantes et intenses localisées sur la face et les membres
+- lésions érythémateuses
+- vésicules sur la peau
+- sensations de brûlures
+- douloureux picotements
+- fatigue récurrents
+- céphalée chronique
+  
+### Syndromes:
+- infarctus cutané
+  
+### Patholgies:
+- infarctus cutané
+- hyperlipidémie
 
 ### Pathologie principale:
-infarctus cutaneus
+- infarctus cutané
 
 ### Prise en charge:
-Local treatment, Topical anti-inflammatory medications, Antihistamines, Analgesics, Balanced diet
+- anti-inflammatoires topiques
+- antihistaminiques
+- analgésiques
+- régime alimentaire équilibré
   
-['Traitement', 1.0]
+['Traitement', 0.95]
 ```

@@ -3,10 +3,14 @@ import typer
 from pathlib import Path
 from .cs import cs
 
-app = typer.Typer(help="CLI to run clinical situation analysis on files or directories.")
+app = typer.Typer(
+    help="CLI to run clinical situation analysis on files or directories."
+)
 
 
-@app.command(help="Run clinical situation analysis on a .txt file or all .txt files in a directory.")
+@app.command(
+    help="Run clinical situation analysis on a .txt file or all .txt files in a directory."
+)
 def clinical_situation(
     p: str = typer.Argument(".", help="Directory or file to run."),
     m: str = typer.Argument(..., help="Model to run."),

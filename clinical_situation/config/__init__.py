@@ -27,15 +27,29 @@ def lm(model):
     return lm
 
 
-def prompt(motif, diag, soins) -> str:
+def prompt(
+    motif, atcd, symptomes, syndromes, diagnostics, diagnosticprincipal, soins
+) -> str:
     text = f"""
-  ### Motif d'hospitalisation:
-  {motif}
+### Motif d'hospitalisation:
+{motif}
 
-  ### Pathologie principale:
-  {diag}
+### Antécédant:
+{atcd}
 
-  ### Prise en charge:
-  {soins}
+### Symptomes:
+{symptomes}
+  
+### Syndromes:
+{syndromes}
+  
+### Patholgies:
+{diagnostics}
+
+### Pathologie principale:
+{diagnosticprincipal}
+
+### Prise en charge:
+{soins}
   """
     return text
