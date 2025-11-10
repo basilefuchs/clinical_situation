@@ -12,7 +12,7 @@ ea("DSPy extract module")
 ca("DSPy classification module")
 cs("Clinical situation")
 
-mr --> ea
+mr --> ea & ca
 ea --"Primary conditions for admission"--> cs
 ea --"Medical history"--> cs
 ea --"Symptoms"--> cs
