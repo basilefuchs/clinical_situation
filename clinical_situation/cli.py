@@ -1,7 +1,8 @@
 import os
 import typer
 from pathlib import Path
-from .cs import cs
+import dspy
+from . import utils
 
 app = typer.Typer(
     help="CLI to run clinical situation analysis on files or directories."
@@ -20,7 +21,8 @@ def clinical_situation(
     if p.is_file() and p.suffix == ".txt":
         with open(p, "r", encoding="utf-8") as file:
             text = file.read()
-        cs(text, m)
+        dspy.configure(lm=utils.lm(m))
+        utils.assess_situation(text, m)
 
     elif p.is_dir():
         os.chdir(p)
@@ -32,7 +34,8 @@ def clinical_situation(
             with open(_, "r", encoding="utf-8") as file:
                 text = file.read()
                 print(f"\tFile : {_}")
-                cs(text, m)
+                dspy.configure(lm=utils.lm(m))
+                utils.assess_situation(text)
 
     else:
         typer.BadParameter(f"❌ Not a .txt file: {p}")

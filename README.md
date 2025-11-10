@@ -1,4 +1,5 @@
 # Clinical situation
+
 Detect clinical situation in medical records using DSPy.
 
 ## How it works
@@ -12,12 +13,12 @@ ca("DSPy classification module")
 cs("Clinical situation")
 
 mr --> ea
-ea --"Primary conditions for admission"--> ca
-ea --"Medical history"--> ca
-ea --"Symptoms"--> ca
-ea --"Syndromes"--> ca
-ea --"Diagnosis"--> ca
-ea --"Care provided"--> ca
+ea --"Primary conditions for admission"--> cs
+ea --"Medical history"--> cs
+ea --"Symptoms"--> cs
+ea --"Syndromes"--> cs
+ea --"Diagnosis"--> cs
+ea --"Care provided"--> cs
 ca --> cs
 ```
 
@@ -27,26 +28,25 @@ ca --> cs
 .
 ├── clinical_situation
 │   ├── cli.py
-│   ├── config
-│   │   ├── config.yaml
-│   │   └── __init__.py
-│   ├── cs.py
+│   ├── config.yaml
 │   ├── __init__.py
 │   ├── __main__.py
-│   └── modules
-│       ├── __init__.py
-│       └── signatures
-│           └── __init__.py
+│   ├── modules
+│   │   ├── __init__.py
+│   │   └── signatures
+│   │       └── __init__.py
+│   └── utils.py
 ├── example.txt
 ├── LICENSE
-├── pyproject.toml
-└── README.md
+├── README.md
+├── requirements.txt
+└── ui.py
 ```
 
 ## Set up
 
 1. Install [Ollama](https://ollama.com/download) and follow instructions.
-2. Create a `config.yaml` file in `clinical_situation/config/` with your settings :
+2. Create a `config.yaml` file in `clinical_situation/` with your settings :
 
 ```yaml
 llm:
@@ -59,8 +59,11 @@ llm:
 
 Run it directly :
 
+> *By default, it use the `example.txt` file in the repo.*
+
 ```bash
 python -m clinical_situation --help 
+python -m clinical_situation . mistral
 ```
 
 Or install it as package :
@@ -71,40 +74,18 @@ clinical_situation --help
 clinical_situation . mistral
 ```
 
-Output :warning: **WORK IN PROGRESS** :warning: : 
+Output : 
 
-```
-### Motif d'hospitalisation:
-- infarctus cutané
-
-### Antécédant:
-- épisodes de fatigue récurrents
-- céphalée chronique
-
-### Symptomes:
-- douleurs persistantes et intenses localisées sur la face et les membres
-- lésions érythémateuses
-- vésicules sur la peau
-- sensations de brûlures
-- douloureux picotements
-- fatigue récurrents
-- céphalée chronique
-  
-### Syndromes:
-- infarctus cutané
-  
-### Patholgies:
-- infarctus cutané
-- hyperlipidémie
-
-### Pathologie principale:
-- infarctus cutané
-
-### Prise en charge:
-- anti-inflammatoires topiques
-- antihistaminiques
-- analgésiques
-- régime alimentaire équilibré
-  
+```bash
 ['Traitement', 0.95]
 ```
+
+## UI
+
+Run directly :
+
+```bash
+streamlit run ui.py
+```
+
+And follow the link [http://localhost:8501](http://localhost:8501)

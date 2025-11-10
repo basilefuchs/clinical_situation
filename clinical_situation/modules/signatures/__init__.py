@@ -83,7 +83,7 @@ class Classify(dspy.Signature):
     Ne pas justifier la classification.
     """
 
-    text: str = dspy.InputField(desc="une synthèse de la situation.")
+    text: str = dspy.InputField(desc="compte rendu médicale.")
     classification: Literal["Diagnostic", "Traitement", "Surveillance"] = (
         dspy.OutputField()
     )
