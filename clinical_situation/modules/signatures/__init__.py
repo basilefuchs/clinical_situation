@@ -3,11 +3,26 @@ from typing import Literal
 
 
 class ExtractDiagnosisSeverity(dspy.Signature):
-    """Analyser attentivement le texte médical fourni (compte rendu, observation, compte rendu opératoire, etc.) et identifier toutes les pathologies, anomalies, symptômes ou diagnostics mentionnés, explicites ou implicites."""
+    """
+    Analyser attentivement le texte médical fourni (compte rendu, observation, compte rendu opératoire, etc.) et identifier toutes les pathologies, anomalies, symptômes ou diagnostics mentionnés, explicites ou implicites.
+    Pour chaque pathologie ou anomalie identifiée, évaluer le niveau de charge de soins sur une échelle de 1 à 4, basée sur l'intensité et la complexité des soins nécessaires pour la prise en charge :
+        1 - Peu de soins : suivi simple, consultation ambulatoire, traitements légers ou ponctuels
+        2 - Soins modérés : traitements médicamenteux réguliers, suivi médical actif, interventions limitées
+        3 - Soins élevés : hospitalisation possible, interventions multiples ou traitements complexes, surveillance rapprochée
+        4 - Soins majeurs : soins intensifs, réanimation, interventions urgentes ou hospitalisation prolongée
+    Fournir un dictionnaire clair associant chaque pathologie ou anomalie à son niveau de charge de soins.
+    Ne pas inclure d’informations non médicales, spéculations ou interprétations non supportées par le texte.
+    """
 
-    text: str = dspy.InputField(desc="Un compte rendu médical.")
+    text: str = dspy.InputField(
+        desc="Un compte rendu médical ou observation clinique détaillée."
+    )
     entities: dict[str, int] = dspy.OutputField(
-        desc="Dictionnaire associant chaque pathologie à un niveau de gravité de 1 à 4."
+        desc=(
+            "Dictionnaire associant chaque pathologie, anomalie ou symptôme identifié à un niveau de charge de soins de 1 à 4, "
+            "basé uniquement sur le texte fourni et la complexité/intensité des soins nécessaires. "
+            "Exemple de sortie : {'pneumonie': 3, 'hypertension': 2}"
+        )
     )
 
 

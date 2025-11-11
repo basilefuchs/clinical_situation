@@ -62,10 +62,7 @@ with col_output:
 
             classification, confidence = clinicalsituation
 
-            markdown_output = f"""
-**Classification :** {classification}  
-**Confiance :** {confidence:.2f}
-"""
+            markdown_output = f"**Situation clinique :** <span style='background-color: #ff433d; color:white; display: inline-block; padding: 2px 6px; border-radius:4px; line-height:1.2;'><b>{classification} ({confidence:.2f})</b></span><br><br>"
             annotated_text = utils.highlight_text_by_severity(text, annotated_words)
 
         placeholder.markdown(
