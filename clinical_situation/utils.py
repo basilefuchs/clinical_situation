@@ -1,7 +1,6 @@
 import re
 import yaml
 import dspy
-from .modules import Extract, ClinicalSituation
 
 
 def load_config(yaml_file: str) -> dict:
@@ -28,32 +27,34 @@ def lm(model):
     )
     return lm
 
-def extract_list(text):
-    categories = [
-        "motif", "atcd", "symptomes", 
-        "syndromes", "diagnostics", 
-        "diagnosticprincipal", "soins"
-    ]
 
-    results = set()
-    for cat in categories:
-        extractor = Extract(cat)
-        items = extractor(text)
-        results.update(items)
+def highlight_text_by_severity(text, diagnosis_severity):
+    """
+    Highlights words by severity and shows the severity number in brackets.
+    """
+    severity_colors = {
+        1: "#4af6c3",
+        2: "#0068ff",
+        3: "#fb8b1e",
+        4: "#ff433d",
+    }
 
-    return list(results)
+    if not diagnosis_severity:
+        return text
 
-def highlight_text(text, words):
-    couleur = "#ffff99"
-    words = sorted(words, key=len, reverse=True)
-    for word in words:
-        pattern = re.compile(rf"\b({re.escape(word)})\b", re.IGNORECASE)
-        text = pattern.sub(rf"<span style='background-color:{couleur}'><b>\1</b></span>", text)
+    sorted_words = sorted(diagnosis_severity.keys(), key=len, reverse=True)
 
-    return text
+    def replacer(match):
+        word = match.group(0)
+        key = next((k for k in diagnosis_severity if k.lower() == word.lower()), None)
+        severity = diagnosis_severity.get(key)
+        color = severity_colors.get(severity, "#ffff99")
+        severity_label = f"[{severity}]" if severity else "[?]"
+        return f"<span style='background-color:{color}; color:white; display: inline-block; padding: 2px 6px; border-radius:4px; line-height:1.2;'><b>{word}</b> {severity_label}</span>"
 
-def assess_situation(text):
-    classifier = ClinicalSituation()
-    result = classifier(text)
+    pattern = re.compile(
+        r"\b(" + "|".join(re.escape(w) for w in sorted_words) + r")\b",
+        re.IGNORECASE | re.UNICODE,
+    )
 
-    return result
+    return pattern.sub(replacer, text)

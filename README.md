@@ -13,32 +13,26 @@ ca("DSPy classification module")
 cs("Clinical situation")
 
 mr --> ea & ca
-ea --"Primary conditions for admission"--> cs
-ea --"Medical history"--> cs
-ea --"Symptoms"--> cs
-ea --"Syndromes"--> cs
-ea --"Diagnosis"--> cs
-ea --"Care provided"--> cs
-ca --> cs
+ea & ca --> cs
 ```
 
 ## Structure
 
 ```
 .
+├── LICENSE
+├── README.md
 ├── clinical_situation
-│   ├── cli.py
-│   ├── config.yaml
 │   ├── __init__.py
 │   ├── __main__.py
+│   ├── cli.py
+│   ├── config.yaml
 │   ├── modules
 │   │   ├── __init__.py
 │   │   └── signatures
 │   │       └── __init__.py
 │   └── utils.py
 ├── example.txt
-├── LICENSE
-├── README.md
 ├── requirements.txt
 └── ui.py
 ```
@@ -59,25 +53,25 @@ llm:
 
 Run it directly :
 
-> *By default, it use the `example.txt` file in the repo.*
-
 ```bash
 python -m clinical_situation --help 
-python -m clinical_situation . mistral
+python -m clinical_situation example.txt qwen3:8b 
 ```
+
+> *Note: `example.txt` file is in the repo.*
 
 Or install it as package :
 
 ```bash
 pip install -e .
 clinical_situation --help
-clinical_situation . mistral
+clinical_situation example.txt qwen3:8b
 ```
 
 Output : 
 
 ```bash
-['Traitement', 0.95]
+['Diagnostic', 0.95]
 ```
 
 ## UI

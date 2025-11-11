@@ -1,38 +1,19 @@
 import dspy
-from .signatures import (
-    ExtractPrimaryConditions,
-    ExtractMedicalHistory,
-    ExtractSymptoms,
-    ExtractSyndromes,
-    ExtractDiagnosis,
-    ExtractMainDiagnosis,
-    ExtractCares,
-    Classify,
-)
+from .signatures import ExtractDiagnosisSeverity, Classify
 
 
 class Extract(dspy.Module):
+    MODULES_MAP = {
+        "severity": ExtractDiagnosisSeverity,
+    }
+
     def __init__(self, module):
-        if module == "motif":
-            self.module = dspy.ChainOfThought(ExtractPrimaryConditions)
-        elif module == "atcd":
-            self.module = dspy.ChainOfThought(ExtractMedicalHistory)
-        elif module == "symptomes":
-            self.module = dspy.ChainOfThought(ExtractSymptoms)
-        elif module == "syndromes":
-            self.module = dspy.ChainOfThought(ExtractSyndromes)
-        elif module == "diagnostics":
-            self.module = dspy.ChainOfThought(ExtractDiagnosis)
-        elif module == "diagnosticprincipal":
-            self.module = dspy.ChainOfThought(ExtractMainDiagnosis)
-        elif module == "soins":
-            self.module = dspy.ChainOfThought(ExtractCares)
-        else:
-            raise Exception("Ce module n'existe pas.")
+        if module not in self.MODULES_MAP:
+            raise ValueError(f"Le module '{module}' n'existe pas.")
+        self.module = dspy.ChainOfThought(self.MODULES_MAP[module])
 
     def forward(self, text):
-        response = self.module(text=text)
-        return response.entities
+        return self.module(text=text).entities
 
 
 class ClinicalSituation(dspy.Module):
