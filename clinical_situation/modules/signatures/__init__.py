@@ -4,14 +4,30 @@ from typing import Literal
 
 class ExtractDiagnosisSeverity(dspy.Signature):
     """
-    Analyser attentivement le texte médical fourni (compte rendu, observation, compte rendu opératoire, etc.) et identifier toutes les pathologies, anomalies, symptômes ou diagnostics mentionnés, explicites ou implicites.
-    Pour chaque pathologie ou anomalie identifiée, évaluer le niveau de charge de soins sur une échelle de 1 à 4, basée sur l'intensité et la complexité des soins nécessaires pour la prise en charge :
+    Analyser attentivement le texte médical fourni (compte rendu, observation clinique, rapport opératoire, etc.)
+    et identifier toutes les pathologies, maladies, antécédents, anomalies, symptômes ou diagnostics mentionnés, qu'ils soient explicites ou implicites.
+
+    ⚠️ Contraintes importantes :
+    - Extraire **uniquement les termes exacts tels qu'ils apparaissent dans le texte** (même orthographe, même formulation).
+    - Ne pas reformuler, regrouper, ni généraliser les termes.
+    - Si plusieurs formulations proches apparaissent (ex : "infection pulmonaire" et "pneumonie"), les garder séparément.
+    - Ne pas inventer ni inférer de pathologies absentes du texte.
+    - Ne pas inclure d’informations non médicales (âge, nom, contexte, etc.).
+
+    Pour chaque pathologie, anomalie ou symptôme identifié, évaluer le **niveau de charge de soins** sur une échelle de 1 à 4,
+    selon l’intensité et la complexité des soins nécessaires pour la prise en charge :
+
         1 - Peu de soins : suivi simple, consultation ambulatoire, traitements légers ou ponctuels
         2 - Soins modérés : traitements médicamenteux réguliers, suivi médical actif, interventions limitées
         3 - Soins élevés : hospitalisation possible, interventions multiples ou traitements complexes, surveillance rapprochée
         4 - Soins majeurs : soins intensifs, réanimation, interventions urgentes ou hospitalisation prolongée
-    Fournir un dictionnaire clair associant chaque pathologie ou anomalie à son niveau de charge de soins.
-    Ne pas inclure d’informations non médicales, spéculations ou interprétations non supportées par le texte.
+
+    Sortie attendue :
+    - Un dictionnaire Python clair associant chaque **terme médical exact extrait du texte** à son niveau de charge de soins (1 à 4).
+    - Exemple : {"pneumonie": 3, "hypertension artérielle": 2}
+
+    L'objectif est de permettre la coloration du texte original à partir des termes extraits : 
+    la précision des chaînes de caractères est donc essentielle.
     """
 
     text: str = dspy.InputField(
@@ -19,9 +35,9 @@ class ExtractDiagnosisSeverity(dspy.Signature):
     )
     entities: dict[str, int] = dspy.OutputField(
         desc=(
-            "Dictionnaire associant chaque pathologie, anomalie ou symptôme identifié à un niveau de charge de soins de 1 à 4, "
-            "basé uniquement sur le texte fourni et la complexité/intensité des soins nécessaires. "
-            "Exemple de sortie : {'pneumonie': 3, 'hypertension': 2}"
+            "Dictionnaire associant chaque pathologie, maladie, antécédant, anomalie, symptôme ou diagnostic EXACTEMENT tel qu'il apparaît dans le texte "
+            "à un niveau de charge de soins (1 à 4). "
+            "Exemple : {'pneumonie': 3, 'hypertension artérielle': 1}"
         )
     )
 
