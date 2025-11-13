@@ -1,0 +1,63 @@
+Centre Hospitalier Universitaire – Service de Médecine Interne / Cardiologie
+
+Compte rendu d’hospitalisation
+
+Identité du patient
+Nom : DUPONT Jean
+Date de naissance : 12/03/1957 (68 ans)
+Sexe : Masculin
+Date d’entrée : 04/11/2025
+Date de sortie : 13/11/2025
+
+Médecin référent : Dr X
+
+Motif d’hospitalisation:
+Dyspnée d’effort, œdèmes des membres inférieurs et fatigue progressive.
+
+Antécédents médicaux:
+Hypertension artérielle ancienne
+Diabète de type 2 mal équilibré
+Infarctus du myocarde (2018) avec stent coronaire
+Insuffisance rénale chronique stade 3
+Dyslipidémie
+
+Examen clinique à l’admission:
+TA 150/95 mmHg – FC 92 bpm – SpO₂ 91 %
+Crépitants pulmonaires bilatéraux, œdèmes des membres inférieurs
+Pas de douleur thoracique
+
+Examens complémentaires:
+BNP : 4200 pg/mL
+Créatinine : 145 µmol/L
+Glycémie : 2,05 g/L
+Na⁺ : 130 mmol/L
+Échocardiographie : FEVG 38 %, insuffisance mitrale modérée
+
+Diagnostics retenus:
+Insuffisance cardiaque systolique décompensée sur cardiopathie ischémique
+Diabète de type 2 déséquilibré
+Insuffisance rénale chronique modérée (stade 3)
+Hypertension artérielle et dyslipidémie associées
+
+Complications évolutives:
+Insuffisance rénale aiguë fonctionnelle transitoire
+Fibrillation auriculaire paroxystique contrôlée
+Déséquilibre glycémique sous diurétique
+
+Traitement instauré:
+Furosémide IV puis relais per os
+Ramipril 2,5 mg/j
+Bisoprolol 5 mg/j
+Insuline basale + corrective
+Atorvastatine 40 mg/j
+Régime hyposodé et restriction hydrique (1,5 L/j)
+
+Évolution et sortie:
+Amélioration de la dyspnée, perte pondérale de 3,5 kg, diurèse efficace, stabilisation de la fonction rénale (créatinine 160 µmol/L) et maintien du rythme sinusal.
+
+Conclusion et recommandations:
+Insuffisance cardiaque stabilisée sous traitement médical.
+Surveillance étroite du poids, de la tension artérielle et de la fonction rénale.
+Contrôle cardiologique dans 2 semaines.
+Suivi diabétologique mensuel.
+Éducation thérapeutique à poursuivre.

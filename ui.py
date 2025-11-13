@@ -2,7 +2,7 @@ import streamlit as st
 import dspy
 from clinical_situation import modules, utils
 
-model = "qwen3:8b"
+model = "qwen3:latest"
 
 if "dspy_ready" not in st.session_state:
     dspy.configure(lm=utils.lm(model))

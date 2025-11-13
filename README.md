@@ -18,7 +18,7 @@ ea & ca --> cs
 
 ## Structure
 
-```
+```bash
 .
 ├── LICENSE
 ├── README.md
@@ -68,7 +68,7 @@ clinical_situation --help
 clinical_situation example.txt qwen3:8b
 ```
 
-Output : 
+Output :
 
 ```bash
 ['Diagnostic', 0.95]

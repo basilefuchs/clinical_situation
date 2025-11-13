@@ -24,6 +24,7 @@ def lm(model):
         config["llm"]["service"] + model,
         api_base=config["llm"]["port"],
         api_key=config["llm"]["api_key"],
+        # model_type=config["llm"]["model_type"], # add for vllm
     )
     return lm
 
