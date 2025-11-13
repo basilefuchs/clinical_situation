@@ -18,8 +18,8 @@ class ExtractDiagnosisSeverity(dspy.Signature):
     selon l’intensité et la complexité des soins nécessaires pour la prise en charge :
 
         1 - Peu de soins : suivi simple, consultation ambulatoire, traitements légers ou ponctuels
-        2 - Soins modérés : traitements médicamenteux réguliers, suivi médical actif, interventions limitées
-        3 - Soins élevés : hospitalisation possible, interventions multiples ou traitements complexes, surveillance rapprochée
+        2 - Soins modérés : traitements médicamenteux réguliers, suivi médical actif, interventions limitées, surveillance rapprochée
+        3 - Soins élevés : hospitalisation nécessaire, interventions multiples ou traitements complexes
         4 - Soins majeurs : soins intensifs, réanimation, interventions urgentes ou hospitalisation prolongée
 
     Sortie attendue :
@@ -42,7 +42,7 @@ class ExtractDiagnosisSeverity(dspy.Signature):
     )
 
 
-class Classify(dspy.Signature):
+class ClinicalSituation(dspy.Signature):
     """
     ### Tâche :
     Classer la situation clinique décrite dans un texte médical enrichi selon l’un des trois types d’hospitalisation suivants.

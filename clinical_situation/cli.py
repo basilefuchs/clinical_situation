@@ -22,8 +22,10 @@ def clinical_situation(
         with open(p, "r", encoding="utf-8") as file:
             text = file.read()
         dspy.configure(lm=utils.lm(m))
-        classifier = modules.ClinicalSituation()
+        classifier = modules.Classify()
+        extractor = modules.Extract("severity")
         print(classifier(text))
+        print(extractor(text))
 
     elif p.is_dir():
         os.chdir(p)
@@ -36,8 +38,10 @@ def clinical_situation(
                 text = file.read()
                 print(f"\tFile : {_}")
                 dspy.configure(lm=utils.lm(m))
-                classifier = modules.ClinicalSituation()
+                classifier = modules.Classify()
+                extractor = modules.Extract("severity")
                 print(classifier(text))
+                print(extractor(text))
 
     else:
         typer.BadParameter(f"❌ Not a .txt file: {p}")

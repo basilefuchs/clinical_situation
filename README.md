@@ -33,6 +33,7 @@ ea & ca --> cs
 │   │       └── __init__.py
 │   └── utils.py
 ├── example.txt
+├── example2.txt
 ├── requirements.txt
 └── ui.py
 ```
@@ -72,6 +73,7 @@ Output :
 
 ```bash
 ['Diagnostic', 0.95]
+{'infarctus cutané': 3, 'hyperlipidémie': 2, 'lésions érythémateuses': 3, 'vésicules': 3, 'céphalée chronique': 2, 'fatigue récurrents': 2}
 ```
 
 ## UI
