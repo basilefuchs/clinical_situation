@@ -5,7 +5,7 @@ from typing import Literal
 class ExtractDiagnosisSeverity(dspy.Signature):
     """
     Analyser attentivement le texte médical fourni (compte rendu, observation clinique, rapport opératoire, etc.)
-    et identifier toutes les pathologies, maladies, antécédents, anomalies, symptômes ou diagnostics mentionnés, qu'ils soient explicites ou implicites.
+    et identifier toutes les pathologies, maladies, antécédents, ou diagnostics mentionnés, qu'ils soient explicites ou implicites.
 
     ⚠️ Contraintes importantes :
     - Extraire **uniquement les termes exacts tels qu'ils apparaissent dans le texte** (même orthographe, même formulation).
@@ -14,7 +14,7 @@ class ExtractDiagnosisSeverity(dspy.Signature):
     - Ne pas inventer ni inférer de pathologies absentes du texte.
     - Ne pas inclure d’informations non médicales (âge, nom, contexte, etc.).
 
-    Pour chaque pathologie, anomalie ou symptôme identifié, évaluer le **niveau de charge de soins** sur une échelle de 1 à 4,
+    Pour chaque pathologie, maladie, antécédent, ou diagnostic identifié, évaluer le **niveau de charge de soins** sur une échelle de 1 à 4,
     selon l’intensité et la complexité des soins nécessaires pour la prise en charge :
 
         1 - Peu de soins : suivi simple, consultation ambulatoire, traitements légers ou ponctuels
@@ -35,7 +35,7 @@ class ExtractDiagnosisSeverity(dspy.Signature):
     )
     entities: dict[str, int] = dspy.OutputField(
         desc=(
-            "Dictionnaire associant chaque pathologie, maladie, antécédant, anomalie, symptôme ou diagnostic EXACTEMENT tel qu'il apparaît dans le texte "
+            "Dictionnaire associant chaque pathologie, maladie, antécédant, ou diagnostic EXACTEMENT tel qu'il apparaît dans le texte "
             "à un niveau de charge de soins (1 à 4). "
             "Exemple : {'pneumonie': 3, 'hypertension artérielle': 1}"
         )
