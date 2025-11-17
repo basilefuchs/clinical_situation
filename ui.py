@@ -54,7 +54,7 @@ with col_output:
 
     if st.session_state.analyze_trigger and text.strip() != "":
         with st.spinner("En cours ...", show_time=True):
-            classifier = modules.ClinicalSituation()
+            classifier = modules.Classify()
             extractor = modules.Extract("severity")
 
             clinicalsituation = classifier(text)

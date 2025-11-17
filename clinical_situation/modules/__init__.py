@@ -1,5 +1,5 @@
 import dspy
-from .signatures import ExtractDiagnosisSeverity, Classify
+from .signatures import ExtractDiagnosisSeverity, ClinicalSituation
 
 
 class Extract(dspy.Module):
@@ -16,9 +16,9 @@ class Extract(dspy.Module):
         return self.module(text=text).entities
 
 
-class ClinicalSituation(dspy.Module):
+class Classify(dspy.Module):
     def __init__(self):
-        self.module = dspy.ChainOfThought(Classify)
+        self.module = dspy.ChainOfThought(ClinicalSituation)
 
     def forward(self, text):
         response = self.module(text=text)
